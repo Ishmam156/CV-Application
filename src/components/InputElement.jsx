@@ -7,9 +7,9 @@ export default class InputElement extends Component {
   }
 
   render() {
-    const { handleGeneralInformationInput, title } = this.props;
+    const { handleInputChange, title } = this.props;
     return (
-      <form onSubmit={(event) => handleGeneralInformationInput(event, title)}>
+      <form onSubmit={(event) => handleInputChange(event, title)}>
         <label htmlFor={title}>{capitalize(title)}:</label>
         <br />
         <input type="text" id={title} name={title} />
