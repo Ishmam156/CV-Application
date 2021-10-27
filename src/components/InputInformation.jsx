@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class DisplayInformation extends Component {
+export default class InputInformation extends Component {
   constructor(props) {
     super(props);
   }
@@ -11,6 +11,7 @@ export default class DisplayInformation extends Component {
         {Object.keys(content).map((item, index) => {
           return (
             <input
+              key={index}
               type="text"
               value={content[item]}
               onChange={(event) => handleChange(event, item)}

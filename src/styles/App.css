@@ -1,18 +1,18 @@
 .mainContent {
   background: #f6f6f6;
-  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 2em;
+  padding-top: 1em;
+  min-height: 100vh;
 }
 
 .CVInput {
   border: 2px solid #212121;
   border-radius: 5px;
   width: 45vw;
-  height: 90vh;
 }
 
 .personalDetails {
@@ -24,6 +24,8 @@
 
 .CVInput input {
   width: 95%;
+  padding: 0.5em;
+  border-radius: 1px;
 }
 
 .CVShow {
@@ -36,4 +38,51 @@
 
 .CVShowPersonalDetails {
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.CVShowPersonalDetails hr {
+  border: 1px solid #6d9886;
+  width: 100%;
+}
+
+.firstPersonalDiv {
+  display: flex;
+  margin-top: 1em;
+}
+
+.innerFirstPersonalDiv {
+  width: 70%;
+}
+
+.innerFirstPersonalDiv h1 {
+  color: #6d9886;
+  font-size: x-large;
+  font-weight: bolder;
+  margin-bottom: 0.5em;
+}
+
+.secondPersonalDiv p {
+  font-size: medium;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.sectionHeader {
+  font-size: large;
+  font-weight: 700;
+  color: #212121;
+}
+
+em {
+  font-weight: 700;
+}
+
+button {
+  background-color: #d9cab3;
+  border: 1px solid black;
+  padding: 0.5em;
+  width: 98%;
+  font-weight: 800;
 }

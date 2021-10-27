@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./styles/reset.css";
 import "./styles/App.css";
 import Header from "./components/Header";
-import DisplayInformation from "./components/DisplayInformation";
+import InputInformation from "./components/InputInformation";
+import DisplayGeneralInformation from "./components/DisplayGeneralInformation";
+import InputMultipleInformation from "./components/InputMultipleInformation";
 
 export default class App extends Component {
   constructor() {
@@ -11,25 +13,48 @@ export default class App extends Component {
     this.state = {
       showCV: false,
       generalInformation: {
-        name: "Ishmam Ahmed",
+        name: "Ishmam Chowdhury",
         currentTitle: "Telecom Professional",
         email: "ishmam@gmail.com",
         number: "+880 1713144775",
         location: "Dhaka, Bangladesh",
         introduction:
-          "Hard working indivdual and some other lines here, so let me check yes",
+          "Goal oriented and extremely driven. Passionate about what I believe in and always eager to excel as well as learn to the fullest extent during any activity. Success is important, but not at the price of integrity.",
       },
-      educationInformation: {
-        school: "",
-        subject: "",
-        date: "",
-      },
-      professionalInformation: {
-        name: "",
-        title: "",
-        task: "",
-        date: "",
-      },
+      educationInformation: [
+        {
+          id: 1,
+          subject: "The Full Stack Open",
+          school: "University of Helsinki",
+          yearStart: "2021",
+          yearEnd: "2021",
+        },
+        {
+          id: 2,
+          subject: "CS50: Introduction to Computer Science",
+          school: "Harvard University",
+          yearStart: "2020",
+          yearEnd: "2020",
+        },
+      ],
+      professionalInformation: [
+        {
+          id: 1,
+          companyName: "Grameenphone",
+          jobTitle: "Specialist - Corporate Strategy",
+          yearStart: "2020",
+          yearEnd: "Present",
+          description: "Working on abcd",
+        },
+        {
+          id: 2,
+          companyName: "Grameenphone",
+          jobTitle: "Specialist - Pricing",
+          yearStart: "2020",
+          yearEnd: "2021",
+          description: "Working on cdefghi",
+        },
+      ],
     };
 
     this.handleGeneralInformationInput =
@@ -38,8 +63,14 @@ export default class App extends Component {
     this.handleEducationInformationInput =
       this.handleEducationInformationInput.bind(this);
 
+    this.handleEducationInformationDelete =
+      this.handleEducationInformationDelete.bind(this);
+
     this.handleProfessionalInformationInput =
       this.handleProfessionalInformationInput.bind(this);
+
+    this.handleProfessionalInformationDelete =
+      this.handleProfessionalInformationDelete.bind(this);
   }
 
   handleGeneralInformationInput = (event, tag) => {
@@ -52,26 +83,48 @@ export default class App extends Component {
     });
   };
 
-  handleEducationInformationInput = (event, tag) => {
+  handleEducationInformationInput = (event, tag, id) => {
     event.preventDefault();
     this.setState({
-      educationInformation: {
-        ...this.state.educationInformation,
-        [tag]: event.target[tag].value,
-      },
+      educationInformation: this.state.educationInformation.map((item) =>
+        item.id !== id
+          ? item
+          : {
+              ...item,
+              [tag]: event.target.value,
+            }
+      ),
     });
-    event.target[tag].value = "";
   };
 
-  handleProfessionalInformationInput = (event, tag) => {
+  handleEducationInformationDelete = (id) => {
+    this.setState({
+      educationInformation: this.state.educationInformation.filter(
+        (item) => item.id !== id
+      ),
+    });
+  };
+
+  handleProfessionalInformationInput = (event, tag, id) => {
     event.preventDefault();
     this.setState({
-      professionalInformation: {
-        ...this.state.professionalInformation,
-        [tag]: event.target[tag].value,
-      },
+      professionalInformation: this.state.professionalInformation.map((item) =>
+        item.id !== id
+          ? item
+          : {
+              ...item,
+              [tag]: event.target.value,
+            }
+      ),
     });
-    event.target[tag].value = "";
+  };
+
+  handleProfessionalInformationDelete = (id) => {
+    this.setState({
+      professionalInformation: this.state.professionalInformation.filter(
+        (item) => item.id !== id
+      ),
+    });
   };
 
   render() {
@@ -80,18 +133,26 @@ export default class App extends Component {
         <div className="CVInput">
           <div className="personalDetails">
             <Header title="Personal Details" />
-            <DisplayInformation
+            <InputInformation
               content={this.state.generalInformation}
               handleChange={this.handleGeneralInformationInput}
+            />
+            <Header title="Education Details" />
+            <InputMultipleInformation
+              contentArray={this.state.educationInformation}
+              handleChange={this.handleEducationInformationInput}
+              handleDelete={this.handleEducationInformationDelete}
+            />
+            <Header title="Professional Details" />
+            <InputMultipleInformation
+              contentArray={this.state.professionalInformation}
+              handleChange={this.handleProfessionalInformationInput}
+              handleDelete={this.handleProfessionalInformationDelete}
             />
           </div>
         </div>
         <div className="CVShow">
-          <div className="CVShowPersonalDetails">
-            <h1>{this.state.generalInformation.name}</h1>
-            <h1>{this.state.generalInformation.email}</h1>
-            <h1>{this.state.generalInformation.number}</h1>
-          </div>
+          <DisplayGeneralInformation content={this.state.generalInformation} />
         </div>
       </main>
     );
