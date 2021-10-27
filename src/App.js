@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import "./styles/reset.css";
 import "./styles/App.css";
-import InformationParent from "./components/InformationParent";
+// import InformationParent from "./components/InformationParent";
 import { capitalize } from "./helper/capitalize";
 
 export default class App extends Component {
@@ -12,9 +12,9 @@ export default class App extends Component {
     this.state = {
       showCV: false,
       generalInformation: {
-        name: "",
-        email: "",
-        number: "",
+        name: "Ishmam Ahmed",
+        email: "ishmam@gmail.com",
+        number: "+880 1713144775",
       },
       educationInformation: {
         school: "",
@@ -79,54 +79,54 @@ export default class App extends Component {
   render() {
     return (
       <main className="mainContent">
-        <Header />
-        {!this.state.showCV && (
-          <>
-            <InformationParent
-              handleChange={this.handleGeneralInformationInput}
-              title="General Information"
-              fields={Object.keys(this.state.generalInformation)}
+        <div className="CVInput">
+          <div className="personalDetails">
+            <h1>Personal Details</h1>
+            <input
+              type="text"
+              value={this.state.generalInformation.name}
+              onChange={(event) =>
+                this.setState({
+                  generalInformation: {
+                    ...this.state.generalInformation,
+                    name: event.target.value,
+                  },
+                })
+              }
             />
-            <InformationParent
-              handleChange={this.handleEducationInformationInput}
-              title="Education Information"
-              fields={Object.keys(this.state.educationInformation)}
+            <input
+              type="text"
+              value={this.state.generalInformation.email}
+              onChange={(event) =>
+                this.setState({
+                  generalInformation: {
+                    ...this.state.generalInformation,
+                    email: event.target.value,
+                  },
+                })
+              }
             />
-            <InformationParent
-              handleChange={this.handleProfessionalInformationInput}
-              title="Professional Information"
-              fields={Object.keys(this.state.professionalInformation)}
+            <input
+              type="text"
+              value={this.state.generalInformation.number}
+              onChange={(event) =>
+                this.setState({
+                  generalInformation: {
+                    ...this.state.generalInformation,
+                    number: event.target.value,
+                  },
+                })
+              }
             />
-          </>
-        )}
-        <br />
-        <button
-          onClick={() =>
-            this.setState({
-              showCV: !this.state.showCV,
-            })
-          }
-        >
-          {this.state.showCV ? "Clear CV" : "Populate CV"}
-        </button>
-        {this.state.showCV &&
-          Object.keys(this.state.generalInformation).map((item, index) => (
-            <div key={index}>
-              {capitalize(item)}: {this.state.generalInformation[item]}
-            </div>
-          ))}
-        {this.state.showCV &&
-          Object.keys(this.state.educationInformation).map((item, index) => (
-            <div key={index}>
-              {capitalize(item)}: {this.state.educationInformation[item]}
-            </div>
-          ))}
-        {this.state.showCV &&
-          Object.keys(this.state.professionalInformation).map((item, index) => (
-            <div key={index}>
-              {capitalize(item)}: {this.state.professionalInformation[item]}
-            </div>
-          ))}
+          </div>
+        </div>
+        <div className="CVShow">
+          <div className="CVShowPersonalDetails">
+            <h1>{this.state.generalInformation.name}</h1>
+            <h1>{this.state.generalInformation.email}</h1>
+            <h1>{this.state.generalInformation.number}</h1>
+          </div>
+        </div>
       </main>
     );
   }

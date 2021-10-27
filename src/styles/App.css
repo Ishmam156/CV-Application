@@ -1,8 +1,39 @@
 .mainContent {
-  background: #696969;
+  background: #f6f6f6;
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 2em;
+}
+
+.CVInput {
+  border: 2px solid #212121;
+  border-radius: 5px;
+  width: 45vw;
+  height: 90vh;
+}
+
+.personalDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+
+.CVInput input {
+  width: 95%;
+}
+
+.CVShow {
+  border: 1px solid #d9cab3;
+  background-color: #f3f0eb;
+  border-radius: 5px;
+  width: 45vw;
+  height: 90vh;
+}
+
+.CVShowPersonalDetails {
+  padding: 1em;
 }
