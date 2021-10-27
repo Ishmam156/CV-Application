@@ -33,7 +33,7 @@
   background-color: #f3f0eb;
   border-radius: 5px;
   width: 45vw;
-  height: 90vh;
+  min-height: 90vh;
 }
 
 .CVShowPersonalDetails {
@@ -85,4 +85,31 @@ button {
   padding: 0.5em;
   width: 98%;
   font-weight: 800;
+}
+
+.outerMultipleInformation {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.outerMultipleInformation h2 {
+  color: #6d9886;
+  font-weight: 700;
+}
+
+.educationOuterDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.educationSecondDiv {
+  font-style: italic;
+}
+
+.professionDescription {
+  margin-top: 0.5em;
+  font-style: italic;
 }

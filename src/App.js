@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import InputInformation from "./components/InputInformation";
 import DisplayGeneralInformation from "./components/DisplayGeneralInformation";
 import InputMultipleInformation from "./components/InputMultipleInformation";
+import DisplayMultipleInformation from "./components/DisplayMultipleInformation";
 
 export default class App extends Component {
   constructor() {
@@ -44,7 +45,8 @@ export default class App extends Component {
           jobTitle: "Specialist - Corporate Strategy",
           yearStart: "2020",
           yearEnd: "Present",
-          description: "Working on abcd",
+          description:
+            "Working on Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum, leo ac egestas interdum, orci ipsum congue odio, et porttitor erat risus ac nulla.",
         },
         {
           id: 2,
@@ -52,7 +54,8 @@ export default class App extends Component {
           jobTitle: "Specialist - Pricing",
           yearStart: "2020",
           yearEnd: "2021",
-          description: "Working on cdefghi",
+          description:
+            "Working on Curabitur eget mauris ut turpis feugiat tempus. Aliquam dapibus sit amet justo et auctor. Sed sit amet mollis purus. Duis dapibus lobortis nisi.",
         },
       ],
     };
@@ -153,6 +156,14 @@ export default class App extends Component {
         </div>
         <div className="CVShow">
           <DisplayGeneralInformation content={this.state.generalInformation} />
+          <DisplayMultipleInformation
+            title="Education"
+            content={this.state.educationInformation}
+          />
+          <DisplayMultipleInformation
+            title="Professional Experience"
+            content={this.state.professionalInformation}
+          />
         </div>
       </main>
     );
