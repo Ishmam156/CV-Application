@@ -6,6 +6,7 @@ import InputInformation from "./components/InputInformation";
 import DisplayGeneralInformation from "./components/DisplayGeneralInformation";
 import InputMultipleInformation from "./components/InputMultipleInformation";
 import DisplayMultipleInformation from "./components/DisplayMultipleInformation";
+import WelcomeMessage from "./components/WelcomeMessage";
 
 export default class App extends Component {
   constructor() {
@@ -132,40 +133,46 @@ export default class App extends Component {
 
   render() {
     return (
-      <main className="mainContent">
-        <div className="CVInput">
-          <div className="personalDetails">
-            <Header title="Personal Details" />
-            <InputInformation
+      <div>
+        <WelcomeMessage />
+        <div className="mainContent">
+          <div className="CVInput">
+            <div className="personalDetails">
+              <Header title="Personal Details" />
+              <InputInformation
+                content={this.state.generalInformation}
+                handleChange={this.handleGeneralInformationInput}
+              />
+              <Header title="Education Details" />
+              <InputMultipleInformation
+                contentArray={this.state.educationInformation}
+                handleChange={this.handleEducationInformationInput}
+                handleDelete={this.handleEducationInformationDelete}
+              />
+              <Header title="Professional Details" />
+              <InputMultipleInformation
+                contentArray={this.state.professionalInformation}
+                handleChange={this.handleProfessionalInformationInput}
+                handleDelete={this.handleProfessionalInformationDelete}
+              />
+            </div>
+          </div>
+          <div className="CVShow">
+            <DisplayGeneralInformation
               content={this.state.generalInformation}
-              handleChange={this.handleGeneralInformationInput}
             />
-            <Header title="Education Details" />
-            <InputMultipleInformation
-              contentArray={this.state.educationInformation}
-              handleChange={this.handleEducationInformationInput}
-              handleDelete={this.handleEducationInformationDelete}
+            <DisplayMultipleInformation
+              title="Education"
+              content={this.state.educationInformation}
             />
-            <Header title="Professional Details" />
-            <InputMultipleInformation
-              contentArray={this.state.professionalInformation}
-              handleChange={this.handleProfessionalInformationInput}
-              handleDelete={this.handleProfessionalInformationDelete}
+            <DisplayMultipleInformation
+              title="Professional Experience"
+              content={this.state.professionalInformation}
             />
           </div>
         </div>
-        <div className="CVShow">
-          <DisplayGeneralInformation content={this.state.generalInformation} />
-          <DisplayMultipleInformation
-            title="Education"
-            content={this.state.educationInformation}
-          />
-          <DisplayMultipleInformation
-            title="Professional Experience"
-            content={this.state.professionalInformation}
-          />
-        </div>
-      </main>
+        <footer>Testing here</footer>
+      </div>
     );
   }
 }

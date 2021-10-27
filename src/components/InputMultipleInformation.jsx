@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { newID } from "../helper/idGenerator";
 
 export default class InputMultipleInformation extends Component {
   constructor(props) {

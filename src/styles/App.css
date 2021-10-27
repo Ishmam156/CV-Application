@@ -1,5 +1,8 @@
-.mainContent {
+main {
   background: #f6f6f6;
+}
+
+.mainContent {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -112,4 +115,35 @@ button {
 .professionDescription {
   margin-top: 0.5em;
   font-style: italic;
+}
+
+.welcomeMessage {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcomeMessage h1 {
+  font-weight: bold;
+  font-size: x-large;
+  color: #6d9886;
+}
+
+.welcomeMessage p {
+  font-size: medium;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.welcomeMessage a {
+  text-decoration: none;
+  color: #6d9886;
+  font-weight: 700;
+}
+
+.welcomeMessage a:hover {
+  text-decoration: underline;
 }
