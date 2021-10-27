@@ -48,6 +48,10 @@ export default class App extends Component {
       },
     });
     event.target[tag].value = "";
+    event.target[tag].placeholder = `${tag} has been added!`;
+    setTimeout(() => {
+      event.target[tag].placeholder = `Enter ${tag} here..`;
+    }, 2000);
   };
 
   handleEducationInformationInput = (event, tag) => {
@@ -76,21 +80,25 @@ export default class App extends Component {
     return (
       <main className="mainContent">
         <Header />
-        <InformationParent
-          handleChange={this.handleGeneralInformationInput}
-          title="General Information"
-          fields={Object.keys(this.state.generalInformation)}
-        />
-        <InformationParent
-          handleChange={this.handleEducationInformationInput}
-          title="Education Information"
-          fields={Object.keys(this.state.educationInformation)}
-        />
-        <InformationParent
-          handleChange={this.handleProfessionalInformationInput}
-          title="Professional Information"
-          fields={Object.keys(this.state.professionalInformation)}
-        />
+        {!this.state.showCV && (
+          <>
+            <InformationParent
+              handleChange={this.handleGeneralInformationInput}
+              title="General Information"
+              fields={Object.keys(this.state.generalInformation)}
+            />
+            <InformationParent
+              handleChange={this.handleEducationInformationInput}
+              title="Education Information"
+              fields={Object.keys(this.state.educationInformation)}
+            />
+            <InformationParent
+              handleChange={this.handleProfessionalInformationInput}
+              title="Professional Information"
+              fields={Object.keys(this.state.professionalInformation)}
+            />
+          </>
+        )}
         <br />
         <button
           onClick={() =>

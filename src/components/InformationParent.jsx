@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputElement from "./InputElement";
+import "../styles/InformationParent.css";
 
 export default class InformationParent extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class InformationParent extends Component {
     const { handleChange, title, fields } = this.props;
 
     return (
-      <div>
+      <div className="informationContainer">
         <h2>{title}</h2>
         {fields.map((item, index) => (
           <InputElement
