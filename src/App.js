@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-// import Header from "./components/Header";
 import "./styles/reset.css";
 import "./styles/App.css";
-// import InformationParent from "./components/InformationParent";
-import { capitalize } from "./helper/capitalize";
+import Header from "./components/Header";
+import DisplayInformation from "./components/DisplayInformation";
 
 export default class App extends Component {
   constructor() {
@@ -13,8 +12,12 @@ export default class App extends Component {
       showCV: false,
       generalInformation: {
         name: "Ishmam Ahmed",
+        currentTitle: "Telecom Professional",
         email: "ishmam@gmail.com",
         number: "+880 1713144775",
+        location: "Dhaka, Bangladesh",
+        introduction:
+          "Hard working indivdual and some other lines here, so let me check yes",
       },
       educationInformation: {
         school: "",
@@ -44,14 +47,9 @@ export default class App extends Component {
     this.setState({
       generalInformation: {
         ...this.state.generalInformation,
-        [tag]: event.target[tag].value,
+        [tag]: event.target.value,
       },
     });
-    event.target[tag].value = "";
-    event.target[tag].placeholder = `${tag} has been added!`;
-    setTimeout(() => {
-      event.target[tag].placeholder = `Enter ${tag} here..`;
-    }, 2000);
   };
 
   handleEducationInformationInput = (event, tag) => {
@@ -81,42 +79,10 @@ export default class App extends Component {
       <main className="mainContent">
         <div className="CVInput">
           <div className="personalDetails">
-            <h1>Personal Details</h1>
-            <input
-              type="text"
-              value={this.state.generalInformation.name}
-              onChange={(event) =>
-                this.setState({
-                  generalInformation: {
-                    ...this.state.generalInformation,
-                    name: event.target.value,
-                  },
-                })
-              }
-            />
-            <input
-              type="text"
-              value={this.state.generalInformation.email}
-              onChange={(event) =>
-                this.setState({
-                  generalInformation: {
-                    ...this.state.generalInformation,
-                    email: event.target.value,
-                  },
-                })
-              }
-            />
-            <input
-              type="text"
-              value={this.state.generalInformation.number}
-              onChange={(event) =>
-                this.setState({
-                  generalInformation: {
-                    ...this.state.generalInformation,
-                    number: event.target.value,
-                  },
-                })
-              }
+            <Header title="Personal Details" />
+            <DisplayInformation
+              content={this.state.generalInformation}
+              handleChange={this.handleGeneralInformationInput}
             />
           </div>
         </div>

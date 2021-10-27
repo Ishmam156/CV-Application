@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import "../styles/Header.css";
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
-    return (
-      <header>
-        <h1>CV Builder App</h1>
-      </header>
-    );
+    return <h1>{this.props.title}</h1>;
   }
 }
